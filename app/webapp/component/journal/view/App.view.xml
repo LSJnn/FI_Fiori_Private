@@ -1,0 +1,33 @@
+<mvc:View controllerName="project2.controller.App"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m"
+    xmlns:tnt= "sap.tnt">
+
+	<!-- 메뉴 툴바 작성 -->
+    <tnt:ToolPage id="toolPage">
+		<tnt:header>
+			<tnt:ToolHeader>
+				<Image height="30px"
+					   class="sapUiSmallMarginBegin"
+					   src="../image/logo.svg" />
+				<MenuButton id ="menuBTn" width ="auto" text="Home">
+					<menu>
+						<Menu id="menu">
+							<MenuItem text="Home" press="onHome"/>
+							<MenuItem text="물품 요청 목록" press="onRequest"/>
+							<MenuItem text="협력 업체 목록" press=".onComapny"/>
+							<MenuItem text="부품 목록" press=".onProduct"/>
+						</Menu>
+					</menu>
+				</MenuButton>
+			</tnt:ToolHeader>
+		</tnt:header>
+	<!-- 메인 컨텐츠에 "app" 넣기.=> 문서 내용은 이곳에 나옴 -->
+		<tnt:mainContents>
+            <App id="app">
+            </App>
+		</tnt:mainContents>
+	</tnt:ToolPage>
+
+</mvc:View>
