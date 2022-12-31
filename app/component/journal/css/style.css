@@ -1,0 +1,50 @@
+#start {
+    color: rgb(137, 137, 137 )
+}
+#title_text {
+	margin-left: 1em;
+}
+
+#title_btn {
+	size: 3em;
+}
+
+
+#menu {
+    color: green;
+    font-weight: bold;
+}
+
+#menu2 {
+    font-weight: bold;
+}
+
+html[dir="ltr"].myAppDemoWT .myCustomButton.sapMBtn{
+    margin-right: 0.125rem;
+}
+
+.right {
+	margin : 2rem;
+	float: right
+}
+.size2 {
+	font-size : 2rem;
+}
+
+@media (max-width:599px) {
+	.size1 {
+		font-size : 1rem;
+	}
+	.size2 {
+		font-size : 2rem;
+	}
+	.size3 {
+		font-size : 3rem;
+	}
+	.size4 {
+		font-size : 4rem;
+	}
+	.size5 {
+		font-size : 5rem;
+	}
+}

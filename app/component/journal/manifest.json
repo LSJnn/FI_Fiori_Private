@@ -1,7 +1,7 @@
 {
   "_version": "1.42.0",
   "sap.app": {
-    "id": "project1",
+    "id": "project2",
     "type": "application",
     "i18n": "i18n/i18n.properties",
     "applicationVersion": {
@@ -69,7 +69,7 @@
     },
     
     "componentUsages": {
-      "journalComponent" : {
+      "requestComponent" : {
         "name": "project2",
         "settings":{},
         "componentData":{},
@@ -84,7 +84,7 @@
       "i18n": {
         "type": "sap.ui.model.resource.ResourceModel",
         "settings": {
-          "bundleName": "project1.i18n.i18n"
+          "bundleName": "project2.i18n.i18n"
         }
       },
       "Request": {
@@ -110,7 +110,7 @@
         "routerClass": "sap.m.routing.Router",
         "viewType": "XML",
         "async": true,
-        "viewPath": "project1.view",
+        "viewPath": "project2.view",
         "controlAggregation": "pages",
         "controlId": "app",
         "clearControlAggregation": false
@@ -123,14 +123,6 @@
             "name":"Home",
             "prefix":"home"
           }
-        },
-        {
-          "name": "Journal",
-          "pattern": "Journal",
-          "target":  {
-            "name":"Journal",
-            "prefix":"journal"
-          }
         }
       ],
       "targets": {
@@ -140,16 +132,11 @@
           "clearControlAggregation": false,
           "viewId": "home",
           "viewName" : "home"
-        },
-        "Journal": {
-          "type":"Component",
-          "usage": "journalComponent",
-          "title": "journal"
         }
       }
     },
     "rootView": {
-      "viewName": "project1.view.App",
+      "viewName": "project2.view.App",
       "type": "XML",
       "async": true,
       "id": "App"
