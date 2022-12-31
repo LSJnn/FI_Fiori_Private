@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="en">
 <!-- Copyright (c) 2015 SAP AG, All Rights Reserved -->
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -43,9 +43,9 @@
                 }
             },
             applications: {
-                "project1-tile": {
+                "project1-display": {
                     title: "App Title",
-                    description: "Fragment Project WepApp",
+                    description: "A Fiori application.",
                     additionalInformation: "SAPUI5.Component=project1",
                     applicationType: "URL",
                     url: "../"
@@ -54,18 +54,20 @@
         };
     </script>
 
-    <script src="https://sapui5.hana.ondemand.com/1.109.3/test-resources/sap/ushell/bootstrap/sandbox.js" id="sap-ushell-bootstrap"></script>
-    <!-- Bootstrap the UI5 core library -->
+    <script src="../test-resources/sap/ushell/bootstrap/sandbox.js" id="sap-ushell-bootstrap"></script>
+    <!-- Bootstrap the UI5 core library. 'data-sap-ui-frameOptions="allow"'' is a NON-SECURE setting for test environments -->
     <script id="sap-ui-bootstrap"
-        src="https://sapui5.hana.ondemand.com/1.109.3/resources/sap-ui-core.js"
-        data-sap-ui-libs=""
+        src="../resources/sap-ui-core.js"
+        data-sap-ui-libs="sap.m,sap.ui.core,sap.f,sap.suite.ui.generic.template,sap.ui.comp,sap.ui.generic.app,sap.ui.table,sap.ushell"
         data-sap-ui-async="true"
         data-sap-ui-preload="async"
         data-sap-ui-theme="sap_horizon"
         data-sap-ui-compatVersion="edge"
         data-sap-ui-language="en"
         data-sap-ui-resourceroots='{"project1": "../"}'
-        data-sap-ui-frameOptions="allow"> // NON-SECURE setting for testing environment
+        data-sap-ui-frameOptions="allow">
+    </script>
+    <script id="locate-reuse-libs" src="../utils/locate-reuse-libs.js" data-sap-ui-manifest-uri="../manifest.json">
     </script>
 </head>
 

@@ -1,5 +1,5 @@
 {
-  "_version": "1.48.0",
+  "_version": "1.42.0",
   "sap.app": {
     "id": "project1",
     "type": "application",
@@ -11,27 +11,27 @@
     "description": "{{appDescription}}",
     "resources": "resources.json",
     "sourceTemplate": {
-      "id": "@sap/generator-fiori:fpm",
-      "version": "1.8.3",
-      "toolsId": "2677b356-cfe3-4253-82f3-c1391ca6fee6"
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.8.1",
+      "toolsId": "40cf4da9-0d5e-42b7-8df2-2e0898755658"
     },
     "dataSources": {
       "mainService": {
-        "uri": "/company/",
+        "uri": "/journal/",
         "type": "OData",
         "settings": {
-          "annotations": [
-            "annotation"
-          ],
+          "annotations": [],
           "localUri": "localService/metadata.xml",
           "odataVersion": "4.0"
         }
       },
-      "annotation": {
-        "type": "ODataAnnotation",
-        "uri": "annotations/annotation.xml",
+      "companyService": {
+        "uri": "/company/",
+        "type": "OData",
         "settings": {
-          "localUri": "annotations/annotation.xml"
+          "annotations": [],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "4.0"
         }
       }
     }
@@ -55,12 +55,25 @@
   "sap.ui5": {
     "flexEnabled": true,
     "dependencies": {
-      "minUI5Version": "1.109.3",
+      "minUI5Version": "1.102.1",
       "libs": {
         "sap.m": {},
         "sap.ui.core": {},
-        "sap.ushell": {},
-        "sap.fe.templates": {}
+        "sap.f": {},
+        "sap.suite.ui.generic.template": {},
+        "sap.ui.comp": {},
+        "sap.ui.generic.app": {},
+        "sap.ui.table": {},
+        "sap.ushell": {}
+      }
+    },
+    
+    "componentUsages": {
+      "journalComponent" : {
+        "name": "project2",
+        "settings":{},
+        "componentData":{},
+        "lazy": true
       }
     },
     "contentDensities": {
@@ -74,47 +87,72 @@
           "bundleName": "project1.i18n.i18n"
         }
       },
-      "": {
+      "Request": {
         "dataSource": "mainService",
         "preload": true,
         "settings": {
-          "synchronizationMode": "None",
-          "operationMode": "Server",
-          "autoExpandSelect": true,
-          "earlyRequests": true
+            "operationMode":"Server",
+            "earlyRequests":true,
+            "synchronizationMode":"None",
+            "autoExpandSelect":true
         }
-      },
-      "@i18n": {
-        "type": "sap.ui.model.resource.ResourceModel",
-        "uri": "i18n/i18n.properties"
       }
     },
     "resources": {
-      "css": []
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
     },
     "routing": {
-      "config": {},
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "project1.view",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "clearControlAggregation": false
+      },
       "routes": [
         {
-          "name": "CompanyMain",
-          "pattern": ":?query:",
-          "target": "CompanyMain"
+          "name": "Home",
+          "pattern": "",
+          "target":  {
+            "name":"Home",
+            "prefix":"home"
+          }
+        },
+        {
+          "name": "Journal",
+          "pattern": "Journal",
+          "target":  {
+            "name":"Journal",
+            "prefix":"journal"
+          }
         }
       ],
       "targets": {
-        "CompanyMain": {
-          "type": "Component",
-          "id": "CompanyMain",
-          "name": "sap.fe.core.fpm",
-          "options": {
-            "settings": {
-              "viewName": "project1.ext.main.Main",
-              "entitySet": "Company",
-              "navigation": {}
-            }
-          }
+        "Home": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "home",
+          "viewName" : "home"
+        },
+        "Journal": {
+          "type":"Component",
+          "usage": "journalComponent",
+          "title": "journal"
         }
       }
+    },
+    "rootView": {
+      "viewName": "project1.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "App"
     }
   }
 }
